@@ -4,8 +4,8 @@ import subprocess
 
 def launch_game():
     # Replace the following command with the CMD command to launch your game
-    cmd_command = "start notepad.exe"
-    subprocess.run(cmd_command, shell=True)
+    cmd_command = "run.bat"
+    subprocess.Popen(cmd_command, shell=True)
 
 def reset_map():
     # Replace the following command with the CMD command to reset your map
