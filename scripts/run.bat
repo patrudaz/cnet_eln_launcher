@@ -1,5 +1,5 @@
 @echo off
-set APPDATA=%~dp0
+set APPDATA=%~dp0\..
 set INST_NAME=1.7.10
 set INST_ID=1.7.10
 set INST_DIR=%APPDATA%\.minecraft\versions\1.7.10

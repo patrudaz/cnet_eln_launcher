@@ -1,9 +1,11 @@
+import os
 import tkinter as tk
 from tkinter import ttk, messagebox
 import subprocess
 
 def launch_game():
     # Replace the following command with the CMD command to launch your game
+    os.chdir("scripts")
     cmd_command = "run.bat"
     subprocess.Popen(cmd_command, shell=True)
 
