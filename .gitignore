@@ -1,1 +1,2 @@
-logs
+/.minecraft/logs/
+/.minecraft/config/splash.properties
