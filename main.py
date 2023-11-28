@@ -3,16 +3,20 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import subprocess
 
+PROJECT_PATH = os.getcwd()
+SCRIPTS_PATH = PROJECT_PATH + "\scripts"
+
 def launch_game():
     # Replace the following command with the CMD command to launch your game
-    os.chdir("scripts")
+    os.chdir(SCRIPTS_PATH)
     cmd_command = "run.bat"
     subprocess.Popen(cmd_command, shell=True)
 
 def reset_map():
     # Replace the following command with the CMD command to reset your map
-    cmd_command = "echo Map reset command"
-    subprocess.run(cmd_command, shell=True)
+    os.chdir(SCRIPTS_PATH)
+    cmd_command = "reset_map.bat"
+    subprocess.Popen(cmd_command, shell=True)
 
 def save_options():
     # Add code to save the selected options to a configuration file or perform any necessary actions
