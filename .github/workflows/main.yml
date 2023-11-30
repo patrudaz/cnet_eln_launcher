@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout Launcher Repository
         uses: actions/checkout@v2
-        with:
-          repository: your-username/launcher-repo
           
       - name: Download artifact
         id: download-artifact
