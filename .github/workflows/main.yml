@@ -23,9 +23,12 @@ jobs:
           path: ./.minecraft/mods
           search_artifacts: true
 
-      - name: Check correct files
-        run: ls ./.minecraft/mods
+      - name: Remove files not needed
+        run: |
+            rm -rf .github
+            rm -rf .idea
 
       - name: Create release
         uses: ncipollo/release-action@v1
+        
         
