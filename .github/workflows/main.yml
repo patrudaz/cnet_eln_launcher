@@ -25,3 +25,7 @@ jobs:
 
       - name: Check correct files
         run: ls ./.minecraft/mods
+
+      - name: Create release
+      - uses: ncipollo/release-action@v1
+        
