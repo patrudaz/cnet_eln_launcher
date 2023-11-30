@@ -27,5 +27,5 @@ jobs:
         run: ls ./.minecraft/mods
 
       - name: Create release
-      - uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1
         
