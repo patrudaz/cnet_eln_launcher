@@ -1,0 +1,26 @@
+name: Update and Release Launcher
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  update_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Launcher Repository
+        uses: actions/checkout@v2
+        with:
+          repository: your-username/launcher-repo
+          
+      - name: Download artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: production-files
+          repo: axalppro/ElectricalAge
+          workflow: main.yml
+          path: ./.minecraft/mods
+          search_artifacts: true
