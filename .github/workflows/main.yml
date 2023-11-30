@@ -2,8 +2,8 @@ name: Update and Release Launcher
 
 on:
   push:
-    branches:
-      - develop
+    tags:
+    - '*'
 
 jobs:
   update_and_release:
