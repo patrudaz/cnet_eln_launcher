@@ -17,8 +17,11 @@ jobs:
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          name: production-files
+          name: ELN_mod
           repo: axalppro/ElectricalAge
           workflow: main.yml
           path: ./.minecraft/mods
           search_artifacts: true
+
+      - name: Check correct files
+        run: ls ./.minecraft/mods
