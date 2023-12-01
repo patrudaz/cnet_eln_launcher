@@ -24,12 +24,13 @@ jobs:
         pip install -r requirements.txt
     
     - name: Install Wine
-      run: sudo apt-get install -y wine64
+      run: sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install -y wine32
 
     - name: Build .exe
       run: |
         pip install pyinstaller
-        wine64 pyinstaller --windowed main.py
+        wine32 pyinstaller --windowed main.py
+
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
