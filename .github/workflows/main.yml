@@ -36,7 +36,7 @@ jobs:
       - name: Build .exe
         run: |
           pip install pyinstaller
-          pyinstaller --windowed --add-data "scripts;scripts" --add-data ".minecraft;.minecraft" --contents_directory='.' --name "cnet_launcher" --distpath dist/ main.py
+          pyinstaller --windowed --add-data "scripts;scripts" --add-data ".minecraft;.minecraft" --contents_directory "." --name "cnet_launcher" --distpath dist/ main.py
 
       - name: Generate .zip file
         run: |
