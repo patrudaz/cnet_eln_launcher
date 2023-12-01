@@ -31,7 +31,7 @@ jobs:
           
       - name: Install 7zip
         run: |
-          winget install 7zip
+          winget install 7zip --force
 
       - name: Download artifact
         id: download-artifact
