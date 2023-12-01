@@ -1,0 +1,37 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Use Python from venv
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+        add-path: ./venv/bin
+
+    - name: Install dependencies
+      run: pip install --upgrade pip
+
+    - name: Install Wine
+      run: sudo apt-get install -y wine64
+
+    - name: Build .exe
+      run: |
+        ./venv/bin/pip install pyinstaller
+        ./venv/bin/pyinstaller --windowed main.py
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: launcher
+        path: dist  # adjust based on your project structure
