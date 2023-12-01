@@ -40,13 +40,13 @@ jobs:
           name: ELN_mod
           repo: axalppro/ElectricalAge
           workflow: main.yml
-          path: ./.minecraft/mods
+          path: ./_internal/.minecraft/mods
           search_artifacts: true
 
       - name: Build .exe
         run: |
           pip install pyinstaller
-          pyinstaller --windowed --add-data "scripts;scripts" --add-data ".minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+          pyinstaller --windowed --add-data "_internal/scripts;_internal/scripts" --add-data "_internal/.minecraft;_internal/.minecraft" --name "cnet_launcher" --distpath dist/ main.py
 
       - name: Generate .zip file
         run: |
