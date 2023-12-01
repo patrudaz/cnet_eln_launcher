@@ -3,7 +3,7 @@ name: Build and Release
 on:
   push:
     branches:
-      - develop
+      - develop  # change this to your main branch
 
 jobs:
   build:
@@ -13,22 +13,20 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Use Python from venv
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10'
-        add-path: ./venv/bin
+        python-version: 3.12  # specify your Python version
 
     - name: Install dependencies
-      run: pip install --upgrade pip
-
-    - name: Install Wine
-      run: sudo apt-get install -y wine64
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
     - name: Build .exe
       run: |
-        ./venv/bin/pip install pyinstaller
-        ./venv/bin/pyinstaller --windowed main.py
+        pip install pyinstaller
+        pyinstaller --windowed main.py  # replace with your main script
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
