@@ -29,7 +29,7 @@ jobs:
     - name: Build .exe
       run: |
         pip install pyinstaller
-        pyinstaller --windowed main.py  # replace with your main script
+        wine64 pyinstaller --windowed main.py
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
