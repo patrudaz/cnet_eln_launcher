@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
@@ -23,14 +23,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Install Wine
-      run: sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install -y wine32
-
     - name: Build .exe
       run: |
         pip install pyinstaller
-        wine32 pyinstaller --windowed main.py
-
+        pyinstaller --windowed main.py  # replace with your main script
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
