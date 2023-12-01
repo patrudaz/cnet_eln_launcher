@@ -32,8 +32,6 @@ jobs:
       - name: Install 7zip
         run: |
           winget install 7zip
-          echo "::add-path::C:\Program Files\7-Zip"
-          7z --help
 
       - name: Download artifact
         id: download-artifact
