@@ -3,7 +3,7 @@ name: Build and Release
 on:
   push:
     branches:
-      - develop  # change this to your main branch
+      - standby  # not using this workflow for the moment
 
 jobs:
   build:
