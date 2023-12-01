@@ -26,7 +26,7 @@ jobs:
     - name: Build .exe
       run: |
         pip install pyinstaller
-        pyinstaller --windowed main.py  # replace with your main script
+        pyinstaller --windowed --add-data "scripts;scripts" --add-data ".minecraft;.minecraft" --name "cnet_launcher" main.py
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
