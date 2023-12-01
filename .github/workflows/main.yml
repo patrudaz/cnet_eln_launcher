@@ -23,6 +23,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
+      - name: Install 7zip
+        run: |
+          winget install 7zip
+          echo "::add-path::C:\Program Files\7-Zip"
+          7z --help
+
       - name: Download artifact
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
@@ -40,8 +46,7 @@ jobs:
 
       - name: Generate .zip file
         run: |
-          cd dist
-          zip -r ../release.zip .
+          7z a -r release.zip ./dist/*
 
       - name: Create release
         uses: ncipollo/release-action@v1
