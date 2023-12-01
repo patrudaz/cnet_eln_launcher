@@ -1,0 +1,146 @@
+[08:32:29] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLTweaker
+[08:32:29] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLTweaker
+[08:32:29] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLTweaker
+[08:32:29] [main/INFO]: Forge Mod Loader version 7.99.40.1614 for Minecraft 1.7.10 loading
+[08:32:29] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.8.0_291, running on Windows 10:amd64:10.0, installed at C:\Program Files\Java\jdk1.8.0_291\jre
+[08:32:29] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[08:32:29] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[08:32:29] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[08:32:29] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[08:32:29] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[08:32:30] [main/INFO]: Found valid fingerprint for Minecraft Forge. Certificate fingerprint e3c3d50c7c986df74c645c0ac54639741c90a557
+[08:32:30] [main/INFO]: Found valid fingerprint for Minecraft. Certificate fingerprint cd99959656f753dc28d863b46769f7f8fbaefcfc
+[08:32:30] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[08:32:30] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[08:32:30] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[08:32:30] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[08:32:30] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[08:32:30] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[08:32:31] [main/INFO]: Setting user: tester
+[08:32:31] [main/INFO]: Successfully patched sw.recreateLeash.
+[08:32:32] [Client thread/INFO]: LWJGL Version: 2.9.1
+[08:32:32] [Client thread/INFO]: [cpw.mods.fml.client.SplashProgress:start:188]: ---- Minecraft Crash Report ----
+// Don't do that.
+
+Time: 12/1/23 8:32 AM
+Description: Loading screen debug info
+
+This is just a prompt for computer specs to be printed. THIS IS NOT A ERROR
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_291, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 150281776 bytes (143 MB) / 268435456 bytes (256 MB) up to 4160749568 bytes (3968 MB)
+	JVM Flags: 11 total; -Xmx3968m -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32m -XX:-UseAdaptiveSizePolicy -XX:-OmitStackTraceInFastThrow -XX:-DontCompileHugeMethods -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: 
+	GL info: ' Vendor: 'Intel' Version: '4.6.0 - Build 30.0.101.1191' Renderer: 'Intel(R) UHD Graphics 770'
+[08:32:32] [Client thread/INFO]: Attempting early MinecraftForge initialization
+[08:32:32] [Client thread/INFO]: MinecraftForge v10.13.4.1614 Initialized
+[08:32:32] [Client thread/INFO]: Replaced 183 ore recipies
+[08:32:32] [Client thread/INFO]: Completed early MinecraftForge initialization
+[08:32:32] [Client thread/INFO]: Found 0 mods from the command line. Injecting into mod discoverer
+[08:32:32] [Client thread/INFO]: Searching C:\git\cnet_eln_launcher\.minecraft\mods for mods
+[08:32:36] [Client thread/INFO]: Forge Mod Loader has identified 5 mods to load
+[08:32:36] [Client thread/INFO]: Attempting connection with missing mods [mcp, FML, Forge, OpenComputers|Core, OpenComputers] at CLIENT
+[08:32:36] [Client thread/INFO]: Attempting connection with missing mods [mcp, FML, Forge, OpenComputers|Core, OpenComputers] at SERVER
+[08:32:36] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:OpenComputers
+[08:32:36] [Client thread/INFO]: Processing ObjectHolder annotations
+[08:32:36] [Client thread/INFO]: Found 341 ObjectHolder annotations
+[08:32:36] [Client thread/INFO]: Identifying ItemStackHolder annotations
+[08:32:36] [Client thread/INFO]: Found 0 ItemStackHolder annotations
+[08:32:36] [Client thread/INFO]: Configured a dormant chunk cache size of 0
+[08:32:37] [Client thread/INFO]: Skipping interface appeng.api.movable.IMovableTile from missing mod appliedenergistics2.
+[08:32:37] [Client thread/INFO]: Skipping interface appeng.api.networking.IGridHost from missing mod appliedenergistics2.
+[08:32:37] [Client thread/INFO]: Skipping interface factorization.api.IChargeConductor from missing mod factorization.
+[08:32:37] [Client thread/INFO]: Skipping interface micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC from missing mod Galacticraft API.
+[08:32:37] [Client thread/INFO]: Skipping interface micdoodle8.mods.galacticraft.api.transmission.tile.IConnector from missing mod Galacticraft API.
+[08:32:37] [Client thread/INFO]: Skipping interface ic2.api.energy.tile.IEnergySink from missing mod IC2.
+[08:32:37] [Client thread/INFO]: Skipping interface ic2classic.api.energy.tile.IEnergySink from missing mod IC2-Classic.
+[08:32:37] [Client thread/INFO]: Skipping interface mekanism.api.energy.IStrictEnergyAcceptor from missing mod Mekanism.
+[08:32:37] [Client thread/INFO]: Skipping interface cofh.api.energy.IEnergyHandler from missing mod CoFHAPI|energy.
+[08:32:37] [Client thread/INFO]: Skipping interface Reika.RotaryCraft.API.Power.ShaftPowerReceiver from missing mod RotaryCraft.
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	at com.google.gson.Gson.fromJson(Gson.java:815)
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	at com.google.gson.Gson.fromJson(Gson.java:768)
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	at com.google.gson.Gson.fromJson(Gson.java:717)
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	at com.google.gson.Gson.fromJson(Gson.java:689)
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	at net.minecraftforge.common.ForgeVersion$1.run(ForgeVersion.java:94)
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:183)
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:145)
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	at com.google.gson.Gson.fromJson(Gson.java:803)
+[08:32:37] [Forge Version Check/INFO]: [java.lang.Throwable$WrappedPrintStream:println:749]: 	... 4 more
+[08:32:37] [Client thread/INFO]: Skipping interface buildcraft.api.tiles.IHasWork from missing mod BuildCraft|Core.
+[08:32:37] [Client thread/INFO]: Skipping interface lordfokas.stargatetech2.api.bus.IBusDevice from missing mod StargateTech2.
+[08:32:37] [Client thread/INFO]: Skipping interface appeng.api.implementations.items.IAEWrench from missing mod appliedenergistics2.
+[08:32:37] [Client thread/INFO]: Skipping interface buildcraft.api.tools.IToolWrench from missing mod BuildCraftAPI|tools.
+[08:32:37] [Client thread/INFO]: Skipping interface com.bluepowermod.api.misc.IScrewdriver from missing mod bluepowerAPI.
+[08:32:37] [Client thread/INFO]: Skipping interface cofh.api.item.IToolHammer from missing mod CoFHAPI|item.
+[08:32:37] [Client thread/INFO]: Skipping interface crazypants.enderio.tool.ITool from missing mod EnderIO.
+[08:32:37] [Client thread/INFO]: Skipping interface mekanism.api.IMekWrench from missing mod Mekanism.
+[08:32:37] [Client thread/INFO]: Skipping interface powercrystals.minefactoryreloaded.api.IMFRHammer from missing mod MineFactoryReloaded.
+[08:32:37] [Client thread/INFO]: Skipping interface mrtjp.projectred.api.IScrewdriver from missing mod ProjRed|Core.
+[08:32:37] [Client thread/INFO]: Skipping interface mods.railcraft.api.core.items.IToolCrowbar from missing mod Railcraft.
+[08:32:37] [Client thread/INFO]: Skipping interface ic2.api.item.IBoxable from missing mod IC2.
+[08:32:37] [Client thread/INFO]: Skipping interface appeng.api.implementations.items.IAEItemPowerStorage from missing mod appliedenergistics2.
+[08:32:37] [Client thread/INFO]: Skipping interface cofh.api.energy.IEnergyContainerItem from missing mod CoFHAPI|energy.
+[08:32:37] [Client thread/INFO]: Skipping interface ic2.api.item.ISpecialElectricItem from missing mod IC2.
+[08:32:37] [Client thread/INFO]: Skipping interface mekanism.api.energy.IEnergizedItem from missing mod Mekanism.
+[08:32:37] [Client thread/INFO]: Initializing OpenComputers API.
+[08:32:39] [Client thread/INFO]: Found a compatible native library: 'OpenComputersMod-1.7.3.1258-lua52-native.64.dll'.
+[08:32:39] [Client thread/INFO]: Found a compatible native library: 'OpenComputersMod-1.7.3.1258-lua53-native.64.dll'.
+[08:32:39] [Client thread/INFO]: Done with pre init phase.
+[08:32:39] [Client thread/INFO]: Applying holder lookups
+[08:32:39] [Client thread/INFO]: Holder lookups applied
+[08:32:39] [Client thread/INFO]: Injecting itemstacks
+[08:32:39] [Client thread/INFO]: Itemstack injection complete
+[08:32:39] [Sound Library Loader/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: 
+[08:32:39] [Sound Library Loader/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: Starting up SoundSystem...
+[08:32:39] [Thread-8/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: Initializing LWJGL OpenAL
+[08:32:39] [Thread-8/INFO]: [paulscode.sound.SoundSystemLogger:message:69]:     (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[08:32:39] [Thread-8/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: OpenAL initialized.
+[08:32:39] [Sound Library Loader/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: 
+[08:32:39] [Sound Library Loader/INFO]: Sound engine started
+[08:32:40] [Client thread/INFO]: Successfully patched bok.func_110827_b.
+[08:32:41] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[08:32:41] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[08:32:41] [Client thread/INFO]: Found extended redstone mods, enabling tier two redstone card.
+[08:32:41] [Client thread/INFO]: Initializing unicode wcwidth.
+[08:32:41] [Client thread/INFO]: Initializing font glyph widths.
+[08:32:41] [Client thread/WARN]: Invalid glyph char code detected in font.hex. Expected 0<= charCode <10000, got: 1D300
+[08:32:41] [Client thread/WARN]: 87 total invalid glyph char codes detected in font.hex
+[08:32:41] [Client thread/INFO]: glyph width ready.
+[08:32:41] [Client thread/INFO]: Initializing unicode glyph provider.
+[08:32:41] [Client thread/INFO]: Loaded 8855 glyphs.
+[08:32:41] [Client thread/INFO]: Done with init phase.
+[08:32:41] [Client thread/INFO]: Injecting itemstacks
+[08:32:41] [Client thread/INFO]: Itemstack injection complete
+[08:32:41] [Client thread/INFO]: Done with post init phase.
+[08:32:41] [Client thread/INFO]: Forge Mod Loader has successfully loaded 5 mods
+[08:32:41] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:OpenComputers
+[08:32:41] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[08:32:42] [Client thread/INFO]: Created: 512x256 textures/items-atlas
+[08:32:42] [Client thread/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: 
+[08:32:42] [Client thread/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: SoundSystem shutting down...
+[08:32:42] [Client thread/INFO]: [paulscode.sound.SoundSystemLogger:importantMessage:90]:     Author: Paul Lamb, www.paulscode.com
+[08:32:42] [Client thread/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: 
+[08:32:42] [Sound Library Loader/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: 
+[08:32:42] [Sound Library Loader/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: Starting up SoundSystem...
+[08:32:42] [Thread-11/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: Initializing LWJGL OpenAL
+[08:32:42] [Thread-11/INFO]: [paulscode.sound.SoundSystemLogger:message:69]:     (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[08:32:42] [Client thread/INFO]: Initializing unicode glyph provider.
+[08:32:42] [Client thread/INFO]: Loaded 8855 glyphs.
+[08:32:42] [Thread-11/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: OpenAL initialized.
+[08:32:42] [Client thread/INFO]: Stopping!
+[08:32:42] [Sound Library Loader/INFO]: [paulscode.sound.SoundSystemLogger:message:69]: 
+[08:32:42] [Sound Library Loader/INFO]: Sound engine started

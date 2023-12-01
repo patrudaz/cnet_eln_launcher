@@ -5,8 +5,8 @@ from tkinter import ttk, messagebox
 import subprocess
 
 PROJECT_PATH = os.getcwd()
-SCRIPTS_PATH = os.path.join(PROJECT_PATH, "scripts")
-OPTIONS_FILE = os.path.join(PROJECT_PATH, "options.json")
+SCRIPTS_PATH = os.path.join(PROJECT_PATH, "_internal", "scripts")
+OPTIONS_FILE = os.path.join(PROJECT_PATH,"_internal", "options.json")
 
 # Default options
 DEFAULT_OPTIONS = {
@@ -89,6 +89,10 @@ def open_options_window():
 # Main window
 root = tk.Tk()
 root.title("Minecraft Launcher")
+
+print(PROJECT_PATH)
+print(SCRIPTS_PATH)
+print(OPTIONS_FILE)
 
 # Styling
 root.geometry("400x250")
