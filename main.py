@@ -5,8 +5,9 @@ from tkinter import ttk, messagebox
 import subprocess
 
 PROJECT_PATH = os.getcwd()
+FILE_PATH = os.path.join(PROJECT_PATH, "_internal")
 SCRIPTS_PATH = os.path.join(PROJECT_PATH, "_internal", "scripts")
-OPTIONS_FILE = os.path.join(PROJECT_PATH,"_internal", "options.json")
+OPTIONS_FILE = os.path.join(PROJECT_PATH, "options.json")
 
 # Default options
 DEFAULT_OPTIONS = {
@@ -16,7 +17,7 @@ DEFAULT_OPTIONS = {
 def launch_game():
     # Replace the following command with the CMD command to launch your game
     os.chdir(SCRIPTS_PATH)
-    cmd_command = "run.bat" if quality_var.get() == "Software" else "run_OpenGL.bat"
+    cmd_command = ("run.bat " + FILE_PATH) if quality_var.get() == "Software" else ("run_OpenGL.bat " + FILE_PATH)
     subprocess.Popen(cmd_command, shell=True)
 
 def reset_map():
