@@ -17,6 +17,10 @@ DEFAULT_OPTIONS = {
 def launch_game():
     # Replace the following command with the CMD command to launch your game
     os.chdir(SCRIPTS_PATH)
+
+    # Load options from JSON file or use defaults
+    update_parameters()
+
     cmd_command = ("run.bat " + FILE_PATH) if quality_var.get() == "Software" else ("run_OpenGL.bat " + FILE_PATH)
     subprocess.Popen(cmd_command, shell=True)
 
@@ -115,6 +119,7 @@ options_window = None
 
 options_button = tk.Button(root, text="Options", command=open_options_window, bg="#3498db", fg="white", font=button_font, width=20)
 options_button.pack(pady=10)
+
 
 # Run the Tkinter event loop
 root.mainloop()
