@@ -3,3 +3,6 @@
 /.minecraft/saves/SIn_world/
 /venv/
 /_internal/.minecraft/logs/
+/_internal/.minecraft/crash-reports/
+/_internal/.minecraft/config/splash.properties
+/_internal/.minecraft/stats/
