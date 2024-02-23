@@ -56,4 +56,11 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "release.zip"
-        
+
+
+  test:
+    runs-on: macos-latest
+    steps:
+      - name: Test command
+        run: echo "macos hello"
+    

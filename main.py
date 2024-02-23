@@ -72,18 +72,6 @@ def open_options_window():
      # Add a label above the combobox that gives information about the renderer
     ttk.Label(options_window, text="OpenGL is recommended.").grid(row=0, column=2, padx=10, pady=5)
 
-
-    # ttk.Label(options_window, text="Sound Volume:").grid(row=1, column=0, padx=10, pady=5)
-    # volume_var = tk.DoubleVar()
-    # volume_scale = ttk.Scale(options_window, from_=0, to=100, variable=volume_var, orient="horizontal")
-    # volume_scale.grid(row=1, column=1, padx=10, pady=5)
-    # volume_scale.set(50)
-    #
-    # ttk.Label(options_window, text="Fullscreen:").grid(row=2, column=0, padx=10, pady=5)
-    # fullscreen_var = tk.BooleanVar()
-    # fullscreen_checkbox = ttk.Checkbutton(options_window, variable=fullscreen_var)
-    # fullscreen_checkbox.grid(row=2, column=1, padx=10, pady=5)
-
     # Load options from JSON file or use defaults
     update_parameters()
 
