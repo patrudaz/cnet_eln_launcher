@@ -50,7 +50,7 @@ jobs:
 
       - name: Generate .zip file
         run: |
-          7z a -r release.zip ./dist/*
+          7z a -r release_win.zip ./dist/*
 
       - name: Upload zip artifact
         uses: actions/upload-artifact@v2
