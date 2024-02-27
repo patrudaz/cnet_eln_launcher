@@ -88,7 +88,7 @@ jobs:
       - name: Build .exe
         run: |
           pip3 install pyinstaller
-          pyinstaller --windowed --add-data "_internal/scripts;scripts" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py
 
       - name: Generate .zip file
         run: |
@@ -113,9 +113,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt update
-          apt install python3.12 -y
-          apt install python3-tk -y
+          sudo apt update
+          sudo apt install python3.12 -y
+          sudo apt install python3-tk -y
 
       - name: Download artifact
         id: download-artifact
@@ -129,8 +129,8 @@ jobs:
 
       - name: Build .exe
         run: |
-          pip3 install pyinstaller
-          pyinstaller --windowed --add-data "_internal/scripts;scripts" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+          sudo pip3 install pyinstaller
+          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py
 
       - name: Generate .zip file
         run: |
