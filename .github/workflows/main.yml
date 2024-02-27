@@ -167,5 +167,5 @@ jobs:
       - run: zip -r release.zip release/
       
       - uses: ncipollo/release-action@v1
-          with:
-            artifacts: "release.zip"  
+        with:
+          artifacts: "release.zip"  
