@@ -88,8 +88,7 @@ jobs:
       - name: Build .exe
         run: |
           pip3 install pyinstaller
-          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py       
-        continue-on-error: true
+          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py
 
       - name: Generate .zip file
         run: |
@@ -114,6 +113,8 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo add-apt-repository universe -y
+          sudo add-apt-repository ppa:deadsnakes/ppa -y
           sudo apt update
           sudo apt upgrade -y
           sudo apt install python3.12 -y
@@ -132,8 +133,7 @@ jobs:
       - name: Build .exe
         run: |
           sudo pip3 install pyinstaller
-          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py                 
-        continue-on-error: true
+          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
 
       - name: Generate .zip file
         run: |
