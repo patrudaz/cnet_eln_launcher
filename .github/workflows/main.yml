@@ -97,7 +97,7 @@ jobs:
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "release.zip"
+          artifacts: "release_macos.zip"
 
   linux_update_and_release:
     runs-on: ubuntu-latest
@@ -142,5 +142,5 @@ jobs:
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "release.zip"
+          artifacts: "release_linux.zip"
 
