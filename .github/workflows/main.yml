@@ -56,11 +56,88 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "release.zip"
+        
 
-
-  test:
+  mac_update_and_release:
     runs-on: macos-latest
+
     steps:
-      - name: Test command
-        run: echo "macos hello"
-    
+      - name: Checkout Launcher Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.12  # specify your Python version
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip 
+          pip3 install -r requirements.txt
+
+      - name: Download artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: ELN_mod
+          repo: axalppro/ElectricalAge
+          workflow: main.yml
+          path: ./_internal/.minecraft/mods
+          search_artifacts: true
+
+      - name: Build .exe
+        run: |
+          pip3 install pyinstaller
+          pyinstaller --windowed --add-data "_internal/scripts;scripts" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+
+      - name: Generate .zip file
+        run: |
+          zip -r release.zip ./dist/*
+
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "release.zip"
+
+  linux_update_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Launcher Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.12  # specify your Python version
+
+      - name: Install dependencies
+        run: |
+          apt update
+          apt install python3.12 -y
+          apt install python3-tk -y
+
+      - name: Download artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: ELN_mod
+          repo: axalppro/ElectricalAge
+          workflow: main.yml
+          path: ./_internal/.minecraft/mods
+          search_artifacts: true
+
+      - name: Build .exe
+        run: |
+          pip3 install pyinstaller
+          pyinstaller --windowed --add-data "_internal/scripts;scripts" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+
+      - name: Generate .zip file
+        run: |
+          zip -r release.zip ./dist/*
+
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "release.zip"
+
