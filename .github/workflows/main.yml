@@ -157,15 +157,15 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: release_win
-          path: release
+          path: .
           
       - uses: actions/download-artifact@v3
         with:
           name: release_linux
-          path: release
+          path: .
           
       - run: zip -r release.zip release/
       
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "release.zip"  
+          artifacts: "release_win.zip", "release_linux.zip"
