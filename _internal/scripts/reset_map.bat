@@ -1,5 +1,9 @@
 @echo off
-mkdir "..\.minecraft\saves\SIn_world"
-cd /d "..\.minecraft\saves\SIn_world"
+
+SET F="..\.minecraft\saves\SIn_world\"
+if exist %F% RMDIR /S /Q %F%
+
+mkdir %F%
+cd /d %F%
 tar -xf "..\SIn_world-20231122.zip"
 echo "Map reset successfully !"
