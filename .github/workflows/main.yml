@@ -87,8 +87,8 @@ jobs:
 
       - name: Build .exe
         run: |
-          pip3 install pyinstaller
-          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+          pip3 install py2app
+          python3 setup.py py2app
 
       - name: Generate .zip file
         run: |
