@@ -93,9 +93,9 @@ jobs:
 
       - name: Change rights
         run: |
-          chmod a+x -R dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts
-          chmod a+w -R dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/sh_log_cnet.txt
-          chmod a+x -R dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/java/mac
+          chmod -R a+x dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts
+          chmod a+w dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/sh_log_cnet.txt
+          chmod -R a+x dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/java/mac
 
       - name: Generate .zip file
         run: |
@@ -146,7 +146,7 @@ jobs:
       - name: Change rights
         run: |
           chmod a+x -R dist/cnet_launcher/_internal/scripts
-          chmod a+w -R dist/cnet_launcher/_internal/scripts/sh_log_cnet.txt
+          chmod a+w dist/cnet_launcher/_internal/scripts/sh_log_cnet.txt
           chmod a+x -R dist/cnet_launcher/_internal/java/linux
 
       - name: Generate .zip file
