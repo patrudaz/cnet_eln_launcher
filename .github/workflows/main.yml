@@ -91,6 +91,12 @@ jobs:
           pip3 install py2app
           python3 setup.py py2app
 
+      - name: Change rights
+        run: |
+          chmod a+x -R dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/*
+          chmod a+w -R dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/sh_log_cnet.txt
+          chmod a+x -R dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/java/mac/*
+
       - name: Generate .zip file
         run: |
           zip -r release_macos.zip ./dist/*
@@ -135,7 +141,13 @@ jobs:
       - name: Build .exe
         run: |
           sudo pip3 install pyinstaller
-          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
+          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/java/win;java/linux" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
+
+      - name: Change rights
+        run: |
+          chmod a+x -R dist/cnet_launcher/_internal/scripts/*
+          chmod a+w -R dist/cnet_launcher/_internal/scripts/sh_log_cnet.txt
+          chmod a+x -R dist/cnet_launcher/_internal/java/linux/*
 
       - name: Generate .zip file
         run: |
