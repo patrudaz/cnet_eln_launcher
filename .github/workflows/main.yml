@@ -89,6 +89,7 @@ jobs:
       - name: Build .exe
         run: |
           pip3 install py2app
+          sed -i '.bak' -e 's/version="1.0.0"/version="${{ github.ref_name }}"/g' setup.py
           python3 setup.py py2app
 
       - name: Change rights
@@ -141,7 +142,7 @@ jobs:
       - name: Build .exe
         run: |
           sudo pip3 install pyinstaller
-          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/java/win:java/linux" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
+          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/java/linux:java/linux" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
 
       - name: Change rights
         run: |
