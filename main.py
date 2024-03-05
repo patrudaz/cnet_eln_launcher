@@ -143,6 +143,7 @@ def open_options_window():
 
 # Main window
 root = tk.Tk(className='Minecraft Launcher for CNet')
+root.protocol("WM_DELETE_WINDOW", root.quit)
 root.resizable(False, False)
 root['padx'] = 20
 root['pady'] = 10
