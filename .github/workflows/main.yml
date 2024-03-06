@@ -47,7 +47,7 @@ jobs:
         id: download-map
         uses: dawidd6/action-download-artifact@v2
         with:
-          name: ELN_map
+          name: cnet_map
           repo: axalppro/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
@@ -101,7 +101,7 @@ jobs:
         id: download-map
         uses: dawidd6/action-download-artifact@v2
         with:
-          name: ELN_map
+          name: cnet_map
           repo: axalppro/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
@@ -164,7 +164,7 @@ jobs:
         id: download-map
         uses: dawidd6/action-download-artifact@v2
         with:
-          name: ELN_map
+          name: cnet_map
           repo: axalppro/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
