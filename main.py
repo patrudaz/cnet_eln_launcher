@@ -39,6 +39,8 @@ def run_subprocess(cmd):
 
 
 def launch_game():
+    global platform
+
     # Replace the following command with the CMD command to launch your game
     log("Launching game...")
     log("File path: " + FILE_PATH)
@@ -52,7 +54,7 @@ def launch_game():
 
     # set up script name
     run_script = script_pre + "run" + script_ext
-    if (sys.platform == "win32") and (quality_var.get() == "OpenGL"):
+    if (platform == "win32") and (quality_var.get() == "OpenGL"):
         run_script = script_pre + "run_OpenGL" + script_ext
 
     # run_command = (run_script + " " + FILE_PATH)
@@ -141,10 +143,26 @@ def open_options_window():
     save_btn.pack()
 
 
+# Checking OS
+platform = sys.platform
+script_ext = SH_EXT
+script_pre = MAC_PREFIX
+logo = "icon"
+if platform == "win32":
+    script_ext = BAT_EXT
+    script_pre = ""
+    logo = logo + ".ico"
+elif platform == "linux":
+    script_pre = LINUX_PREFIX
+    logo = "@" + logo + ".xbm"
+else:
+    logo = logo + ".icns"
+
 # Main window
 root = tk.Tk(className='Minecraft Launcher for CNet')
-root.protocol("WM_DELETE_WINDOW", root.quit)
 root.resizable(False, False)
+root.iconbitmap(logo)
+root.protocol("WM_DELETE_WINDOW", root.quit)
 root['padx'] = 20
 root['pady'] = 10
 
@@ -155,7 +173,7 @@ launch_btn.pack()
 map_btn = tk.Button(root, text="Reset Map", command=reset_map, fg='blue', width=15)
 map_btn.pack(pady=10)
 
-if sys.platform == "win32":
+if platform == "win32":
     options_btn = tk.Button(root, text="Options", command=open_options_window, fg='orange', width=15)
     options_btn.pack()
 
@@ -169,13 +187,6 @@ log_view.pack()
 # Identify which OS we are running on
 log(f"sys.platform: {sys.platform}")
 log("Project Path: " + os.getcwd())
-script_ext = SH_EXT
-script_pre = MAC_PREFIX
-if sys.platform == "win32":
-    script_ext = BAT_EXT
-    script_pre = ""
-elif sys.platform == "linux":
-    script_pre = LINUX_PREFIX
 
 if script_pre != "":
     log("We will use `" + script_pre + "` as prefix to run scripts with extension " + script_ext)
