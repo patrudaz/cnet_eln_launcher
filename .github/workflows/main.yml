@@ -43,6 +43,17 @@ jobs:
           path: ./_internal/.minecraft/mods
           search_artifacts: true
 
+      - name: Download map
+        id: download-map
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: ELN_map
+          repo: axalppro/cnet_files
+          workflow: main.yml
+          path: ./_internal/.minecraft/saves
+          search_artifacts: true
+
+
       - name: Build .exe
         run: |
           pip install pyinstaller
@@ -84,6 +95,16 @@ jobs:
           repo: axalppro/ElectricalAge
           workflow: main.yml
           path: ./_internal/.minecraft/mods
+          search_artifacts: true
+
+      - name: Download map
+        id: download-map
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: ELN_map
+          repo: axalppro/cnet_files
+          workflow: main.yml
+          path: ./_internal/.minecraft/saves
           search_artifacts: true
 
       - name: Build .exe
@@ -139,10 +160,20 @@ jobs:
           path: ./_internal/.minecraft/mods
           search_artifacts: true
 
+      - name: Download map
+        id: download-map
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: ELN_map
+          repo: axalppro/cnet_files
+          workflow: main.yml
+          path: ./_internal/.minecraft/saves
+          search_artifacts: true
+
       - name: Build .exe
         run: |
           sudo pip3 install pyinstaller
-          pyinstaller --windowed --add-data "_internal/scripts:scripts" --add-data "_internal/java/linux:java/linux" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
+          pyinstaller --windowed --i "icon.icns" --add-data "icon.icns:." --add-data "_internal/scripts:scripts" --add-data "_internal/java/linux:java/linux" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
 
       - name: Change rights
         run: |
