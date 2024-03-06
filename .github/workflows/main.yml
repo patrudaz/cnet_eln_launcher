@@ -57,7 +57,7 @@ jobs:
       - name: Build .exe
         run: |
           pip install pyinstaller
-          pyinstaller --windowed --i "icon.ico" --add-data "minecraft_256.ico;." --add-data "_internal/scripts;scripts" --add-data "_internal/java/win;java/win" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+          pyinstaller --windowed --i "icon.ico" --add-data "icon.ico;." --add-data "_internal/scripts;scripts" --add-data "_internal/java/win;java/win" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
 
       - name: Generate .zip file
         run: |
