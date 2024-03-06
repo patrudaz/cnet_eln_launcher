@@ -9,5 +9,11 @@ fi
 mkdir ../.minecraft/saves/SIn_world
 cd ../.minecraft/saves/SIn_world
 
-unzip ../SIn_world-20231122.zip
-echo "Map reset successfully !"
+zipfile=$(ls -t ../*.zip | head -1)
+
+if [ -n "$zipfile" ]; then
+  unzip "$zipfile"
+  echo "Map reset successfully !"
+else
+  echo "No ZIP file found in parent directory."
+fi
