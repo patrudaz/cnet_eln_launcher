@@ -151,7 +151,7 @@ logo = "icon"
 if platform == "win32":
     script_ext = BAT_EXT
     script_pre = ""
-    logo = logo + ".ico"
+    logo = "_internal/" + logo + ".ico"
 elif platform == "linux":
     script_pre = LINUX_PREFIX
     logo = "@" + logo + ".xbm"
