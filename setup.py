@@ -23,7 +23,7 @@ DATA_FILES = [
     # '_internal', 'venv_java_mac',  'options.json']
 
 OPTIONS = {
-    'iconfile':'icon.icns'
+    'iconfile':'_internal/icon.icns'
 }
 
 setup(

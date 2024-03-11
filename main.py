@@ -167,22 +167,22 @@ root['padx'] = 20
 root['pady'] = 10
 
 # Buttons
-launch_btn = tk.Button(root, text="Launch Game", command=launch_game, fg='green', width=15)
-launch_btn.pack()
+launch_btn = tk.Button(root, text="LAUNCH GAME", command=launch_game, bg='#00C043', activebackground='#139A42',  fg='black', width=20, font=('Consolas', 24))
+launch_btn.grid(row=0, column=0, columnspan=2, pady=15, sticky='s')
 
-map_btn = tk.Button(root, text="Reset Map", command=reset_map, fg='blue', width=15)
-map_btn.pack(pady=10)
+map_btn = tk.Button(root, text="RESET MAP", command=reset_map, bg='#E30067', activebackground='#A5014B', fg='black', width=14, font=('Consolas', 16))
+map_btn.grid(row=1, column=0, sticky='e',pady=5)
 
 if platform == "win32":
-    options_btn = tk.Button(root, text="Options", command=open_options_window, fg='orange', width=15)
-    options_btn.pack()
+    options_btn = tk.Button(root, text="OPTIONS", command=open_options_window, bg='#15A8F8', activebackground='#0E76AE', fg='black', width=14, font=('Consolas', 16))
+    options_btn.grid(row=1, column=1, pady=5, sticky='w')
 
-quit_btn = tk.Button(root, text="Quit", command=root.quit, width=10)
-quit_btn.pack(pady=10)
+quit_btn = tk.Button(root, text="QUIT", bg='#E4080A', activebackground='#8B0102', fg='black', command=root.quit, width=10, font=('Consolas', 12))
+quit_btn.grid(row=2, columnspan=2, pady=10)
 
 log_view = ScrolledText(root, state=tk.DISABLED)
 log_view.configure(font='TkFixedFont', bg='gray2', fg='green3', height=10, width=80)
-log_view.pack()
+log_view.grid(row=3, columnspan=2, pady=20)
 
 # Identify which OS we are running on
 log(f"sys.platform: {sys.platform}")
