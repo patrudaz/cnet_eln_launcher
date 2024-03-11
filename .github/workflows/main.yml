@@ -57,7 +57,7 @@ jobs:
       - name: Build .exe
         run: |
           pip install pyinstaller
-          pyinstaller --windowed --i "icon.ico" --add-data "icon.ico;." --add-data "_internal/scripts;scripts" --add-data "_internal/java/win;java/win" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+          pyinstaller --windowed --i "icon.ico" --add-data "_internal/icon.ico;." --add-data "_internal/scripts;scripts" --add-data "_internal/java/win;java/win" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
 
       - name: Generate .zip file
         run: |
@@ -173,7 +173,7 @@ jobs:
       - name: Build .exe
         run: |
           sudo pip3 install pyinstaller
-          pyinstaller --windowed --i "icon.xbm" --add-data "icon.icns:." --add-data "_internal/scripts:scripts" --add-data "_internal/java/linux:java/linux" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
+          pyinstaller --windowed --i "icon.xbm" --add-data "_internal/icon.icns:." --add-data "_internal/scripts:scripts" --add-data "_internal/java/linux:java/linux" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
 
       - name: Change rights
         run: |
