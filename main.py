@@ -147,11 +147,11 @@ def open_options_window():
 platform = sys.platform
 script_ext = SH_EXT
 script_pre = MAC_PREFIX
-logo = "icon"
+logo = "_internal/icon"
 if platform == "win32":
     script_ext = BAT_EXT
     script_pre = ""
-    logo = "_internal/" + logo + ".ico"
+    logo = logo + ".ico"
 elif platform == "linux":
     script_pre = LINUX_PREFIX
     logo = "@" + logo + ".xbm"
