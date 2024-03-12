@@ -166,18 +166,22 @@ root.protocol("WM_DELETE_WINDOW", root.quit)
 root['padx'] = 20
 root['pady'] = 10
 
-# Buttons
-launch_btn = tk.Button(root, text="LAUNCH GAME", command=launch_game, bg='#00C043', activebackground='#139A42',  fg='black', width=20, font=('Consolas', 24))
+# Buttons: Because activebackground and bg do not work on macOS, we check the platform to create different button's layout
+if (platform == "win32") or (platform == "linux"):
+    launch_btn = tk.Button(root, text="LAUNCH GAME", command=launch_game, bg='#00C043', activebackground='#139A42',  fg='black', width=20, font=('Consolas', 24))
+    map_btn = tk.Button(root, text="RESET MAP", command=reset_map, bg='#E30067', activebackground='#A5014B', fg='black', width=14, font=('Consolas', 16))
+    quit_btn = tk.Button(root, text="QUIT", bg='#E4080A', activebackground='#8B0102', fg='black', command=root.quit, width=10, font=('Consolas', 12))
+
+    if platform == "win32":
+        options_btn = tk.Button(root, text="OPTIONS", command=open_options_window, bg='#15A8F8', activebackground='#0E76AE', fg='black', width=14, font=('Consolas', 16))
+        options_btn.grid(row=1, column=1, pady=5, sticky='w')
+else:
+    launch_btn = tk.Button(root,  text="Launch Game", command=launch_game, fg='green', width=15)
+    map_btn = tk.Button(root, text="Reset Map", command=reset_map, fg='blue', width=15)
+    quit_btn = tk.Button(root, text="Quit", command=root.quit, width=10)
+
 launch_btn.grid(row=0, column=0, columnspan=2, pady=15, sticky='s')
-
-map_btn = tk.Button(root, text="RESET MAP", command=reset_map, bg='#E30067', activebackground='#A5014B', fg='black', width=14, font=('Consolas', 16))
-map_btn.grid(row=1, column=0, sticky='e',pady=5)
-
-if platform == "win32":
-    options_btn = tk.Button(root, text="OPTIONS", command=open_options_window, bg='#15A8F8', activebackground='#0E76AE', fg='black', width=14, font=('Consolas', 16))
-    options_btn.grid(row=1, column=1, pady=5, sticky='w')
-
-quit_btn = tk.Button(root, text="QUIT", bg='#E4080A', activebackground='#8B0102', fg='black', command=root.quit, width=10, font=('Consolas', 12))
+map_btn.grid(row=1, column=0, sticky='e', pady=5)
 quit_btn.grid(row=2, columnspan=2, pady=10)
 
 log_view = ScrolledText(root, state=tk.DISABLED)
