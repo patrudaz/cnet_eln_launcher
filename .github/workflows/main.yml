@@ -115,9 +115,10 @@ jobs:
 
       - name: Change rights
         run: |
-          chmod -R a+x dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts
+          chflags -R nouchg dist/CNetMinecraftLauncher.app
+          chmod -R u+r+w+x,g+r+w+x,o+r-w+x v0.8.1/dist/CNetMinecraftLauncher.app
           chmod a+w dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/sh_log_cnet.txt
-          chmod -R a+x dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/java/mac
+          chmod -R -N dist/CNetMinecraftLauncher.app
 
       - name: Generate .zip file
         run: |

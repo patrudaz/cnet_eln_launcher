@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 exec >> sh_log_cnet.txt
 
