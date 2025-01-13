@@ -110,6 +110,7 @@ jobs:
       - name: Build .exe
         run: |
           pip3 install py2app
+          pip3 install -Iv setuptools==70.0.0
           sed -i '.bak' -e 's/version="1.0.0"/version="${{ github.ref_name }}"/g' setup.py
           python3 setup.py py2app
 
