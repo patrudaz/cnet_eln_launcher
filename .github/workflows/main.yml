@@ -38,7 +38,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           name: ELN_mod
-          repo: axalppro/ElectricalAge
+          repo: patrudaz/ElectricalAge
           workflow: main.yml
           path: ./_internal/.minecraft/mods
           search_artifacts: true
@@ -48,7 +48,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           name: cnet_map
-          repo: axalppro/cnet_files
+          repo: patrudat/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
           search_artifacts: true
@@ -92,7 +92,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           name: ELN_mod
-          repo: axalppro/ElectricalAge
+          repo: patrudaz/ElectricalAge
           workflow: main.yml
           path: ./_internal/.minecraft/mods
           search_artifacts: true
@@ -102,7 +102,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           name: cnet_map
-          repo: axalppro/cnet_files
+          repo: patrudaz/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
           search_artifacts: true
@@ -156,7 +156,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           name: ELN_mod
-          repo: axalppro/ElectricalAge
+          repo: patrudaz/ElectricalAge
           workflow: main.yml
           path: ./_internal/.minecraft/mods
           search_artifacts: true
@@ -166,7 +166,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           name: cnet_map
-          repo: axalppro/cnet_files
+          repo: patrudaz/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
           search_artifacts: true
