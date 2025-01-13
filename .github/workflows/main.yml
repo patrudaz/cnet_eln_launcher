@@ -113,10 +113,10 @@ jobs:
           rm -rf build dist
           python3 setup.py py2app
 
-      - name: Change rights
+      - name: Change permissions and rights
         run: |
           chflags -R nouchg dist/CNetMinecraftLauncher.app
-          chmod -R u+r+w+x,g+r+w+x,o+r-w+x v0.8.1/dist/CNetMinecraftLauncher.app
+          chmod -R u+r+w+x,g+r+w+x,o+r-w+x dist/CNetMinecraftLauncher.app
           chmod a+w dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/sh_log_cnet.txt
           chmod -R -N dist/CNetMinecraftLauncher.app
 
