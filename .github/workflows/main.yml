@@ -33,22 +33,22 @@ jobs:
         run: |
           winget install 7zip --force
 
-      - name: Download artifact
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          name: ELN_mod
-          repo: patrudaz/ElectricalAge
-          workflow: main.yml
-          path: ./_internal/.minecraft/mods
-          search_artifacts: true
+#      - name: Download artifact
+#        id: download-artifact
+#        uses: dawidd6/action-download-artifact@v2
+#        with:
+#          name: ELN_mod
+#          repo: patrudaz/ElectricalAge
+#          workflow: main.yml
+#          path: ./_internal/.minecraft/mods
+#          search_artifacts: true
 
       - name: Download map
         id: download-map
         uses: dawidd6/action-download-artifact@v2
         with:
           name: cnet_map
-          repo: patrudat/cnet_files
+          repo: patrudaz/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
           search_artifacts: true
@@ -87,15 +87,15 @@ jobs:
           python3 -m pip install --upgrade pip 
           pip3 install -r requirements.txt
 
-      - name: Download artifact
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          name: ELN_mod
-          repo: patrudaz/ElectricalAge
-          workflow: main.yml
-          path: ./_internal/.minecraft/mods
-          search_artifacts: true
+#      - name: Download artifact
+#        id: download-artifact
+#        uses: dawidd6/action-download-artifact@v2
+#        with:
+#          name: ELN_mod
+#          repo: patrudaz/ElectricalAge
+#          workflow: main.yml
+#          path: ./_internal/.minecraft/mods
+#          search_artifacts: true
 
       - name: Download map
         id: download-map
@@ -151,15 +151,15 @@ jobs:
           sudo apt install python3.12 -y
           sudo apt install python3-tk -y
 
-      - name: Download artifact
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          name: ELN_mod
-          repo: patrudaz/ElectricalAge
-          workflow: main.yml
-          path: ./_internal/.minecraft/mods
-          search_artifacts: true
+#      - name: Download artifact
+#        id: download-artifact
+#        uses: dawidd6/action-download-artifact@v2
+#        with:
+#          name: ELN_mod
+#          repo: patrudaz/ElectricalAge
+#          workflow: main.yml
+#          path: ./_internal/.minecraft/mods
+#          search_artifacts: true
 
       - name: Download map
         id: download-map
