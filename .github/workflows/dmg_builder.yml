@@ -49,7 +49,7 @@ jobs:
       - name: Generate .dmg file
         uses: QQxiaoming/create-dmg-action@v0.0.2
         with:
-          name: 'release_macos.dmg'
+          name: 'release_macos'
           srcdir: 'dist/'
 
       - name: Upload dmg artifact
