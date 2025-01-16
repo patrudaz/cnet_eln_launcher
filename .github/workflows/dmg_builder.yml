@@ -1,0 +1,75 @@
+name: Update and Release Launcher
+
+on:
+  push:
+    branches:
+    - develop
+
+jobs:
+  mac_update_and_release:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Launcher Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.12  # specify your Python version
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip 
+          pip3 install -r requirements.txt
+
+      - name: Download map
+        id: download-map
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: cnet_map
+          repo: patrudaz/cnet_files
+          workflow: main.yml
+          path: ./_internal/.minecraft/saves
+          search_artifacts: true
+
+      - name: Build macOS Application
+        run: |
+          pip3 install py2app
+          rm -rf build dist
+          sed -i '.bak' -e 's/version="1.0.0"/version="${{ github.ref_name }}"/g' setup.py
+          python3 setup.py py2app
+
+      - name: Change permissions and rights
+        run: |
+          chflags -R nouchg dist/CNetMinecraftLauncher.app
+          chmod -R u+r+w+x,g+r+w+x,o+r-w+x dist/CNetMinecraftLauncher.app
+          chmod a+w dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/sh_log_cnet.txt
+          chmod -R -N dist/CNetMinecraftLauncher.app
+
+      - name: Generate .dmg file
+        uses: QQxiaoming/create-dmg-action@v0.0.2
+        with:
+          name: 'release_macos.dmg'
+          srcdir: 'dist/'
+
+      - name: Upload dmg artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release_macos
+          path: ./release_macos.dmg
+
+  release:
+    runs-on: ubuntu-latest
+    
+    needs: [mac_update_and_release]
+    
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release_macos
+          path: .
+                
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "release_macos.dmg"
