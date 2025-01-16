@@ -46,7 +46,8 @@ jobs:
           chmod -R u+r+w+x,g+r+w+x,o+r-w+x dist/CNetMinecraftLauncher.app
           chmod a+w dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/sh_log_cnet.txt
           chmod -R -N dist/CNetMinecraftLauncher.app
-          ./remxttr.sh -R dist/CNetMinecraftLauncher.app
+          cp -v remxttr.sh dist/emxttr.sh
+          chmod u+r+w+x,g+r+w+x,o+r-w+x dist/emxttr.sh
 
       - name: Generate .dmg file
         uses: Lethja/create-dmg-action@v0.0.2
