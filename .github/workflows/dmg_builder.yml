@@ -51,11 +51,11 @@ jobs:
       - name: Generate .dmg file
         uses: Lethja/create-dmg-action@v0.0.2
         with:
-          name: 'release_macos'
+          name: 'CNetMinecraftLauncher'
           srcdir: 'dist/'
 
       - name: Upload dmg artifact
         uses: actions/upload-artifact@v4
         with:
           name: release_macos
-          path: ./release_macos.dmg
+          path: ./CNetMinecraftLauncher.dmg
