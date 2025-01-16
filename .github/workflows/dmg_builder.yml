@@ -1,4 +1,4 @@
-name: Update and Release Launcher
+name: DMG package builder
 
 on:
   push:
