@@ -37,7 +37,6 @@ jobs:
         run: |
           pip3 install py2app
           rm -rf build dist
-          sed -i '.bak' -e 's/version="1.0.0"/version="${{ github.ref_name }}"/g' setup.py
           python3 setup.py py2app
 
       - name: Change permissions and rights
