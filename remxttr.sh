@@ -17,29 +17,25 @@
 oldIFS=$IFS # save the field separator  
 IFS=$'\n' # new field separator, the end of line  
 
-
-
-echo "Path : $2" > /tmp/xattrLog
-
-	
 if [ "$1" = "-R" ] 
 then
 	echo "Recursive"
 	for i in $(ls -Rl@ $2 | grep '^	' | awk '{print $1}' | sort -u)
 	do echo Removing $i ...
-	find $2 -print0 | xargs -0t xattr -d $i 2>/dev/null ;
+		find $2 -print0 | xargs -0t xattr -d $i 2>/dev/null ;
 	done
 
 fi
-	echo "Doing path itself"
+
+echo "Doing path itself"
 	
-	#ls parent but grep exact path
+#ls parent but grep exact path
 	
-	for i in $(xattr $2 | awk 'BEGIN { FS = "\r" } ; {print $1}')
-	do echo Removing $i ...
+for i in $(xattr $2 | awk 'BEGIN { FS = "\r" } ; {print $1}')
+do echo Removing $i ...
 	#find $2 -print0 | xargs -0t xattr -d $i 2>/dev/null ;
 	xattr -d $i $2
-	done
+done
 
 
 IFS=$old_IFS

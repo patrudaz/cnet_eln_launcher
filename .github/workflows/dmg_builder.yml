@@ -38,6 +38,7 @@ jobs:
           pip3 install py2app
           rm -rf build dist
           python3 setup.py py2app
+          chmod a+x remxttr.sh
 
       - name: Change permissions and rights
         run: |
@@ -48,7 +49,7 @@ jobs:
           ./remxttr.sh -R dist/CNetMinecraftLauncher.app
 
       - name: Generate .dmg file
-        uses: QQxiaoming/create-dmg-action@v0.0.2
+        uses: Lethja/create-dmg-action@v0.0.2
         with:
           name: 'release_macos'
           srcdir: 'dist/'
