@@ -3,7 +3,7 @@ name: DMG package builder
 on:
   push:
     branches:
-    - develop
+    - dmg
 
 jobs:
   mac_update_and_release:
@@ -40,7 +40,7 @@ jobs:
           python3 setup.py py2app
 
       - name: Generate .dmg file
-        uses: patrudaz/create-dmg-action@v0.0.2
+        uses: Lethja/create-dmg-action@v0.0.2
         with:
           name: 'CNetMinecraftLauncher'
           srcdir: 'dist/'
