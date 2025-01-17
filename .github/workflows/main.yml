@@ -107,29 +107,24 @@ jobs:
           path: ./_internal/.minecraft/saves
           search_artifacts: true
 
-      - name: Build .exe
+      - name: Build macOS application
         run: |
           pip3 install py2app
           rm -rf build dist
           sed -i '.bak' -e 's/version="1.0.0"/version="${{ github.ref_name }}"/g' setup.py
           python3 setup.py py2app
 
-      - name: Change permissions and rights
-        run: |
-          chflags -R nouchg dist/CNetMinecraftLauncher.app
-          chmod -R u+r+w+x,g+r+w+x,o+r-w+x dist/CNetMinecraftLauncher.app
-          chmod a+w dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/sh_log_cnet.txt
-          chmod -R -N dist/CNetMinecraftLauncher.app
+      - name: Generate .dmg package
+        uses: Lethja/create-dmg-action@v0.0.2
+        with:
+          name: 'CNetMinecraftLauncher'
+          srcdir: 'dist/'
 
-      - name: Generate .zip file
-        run: |
-          zip -r release_macos.zip ./dist/*
-
-      - name: Upload zip artifact
+      - name: Upload dmg artifact
         uses: actions/upload-artifact@v4
         with:
           name: release_macos
-          path: ./release_macos.zip
+          path: ./CNetMinecraftLauncher.dmg
 
   linux_update_and_release:
     runs-on: ubuntu-latest
@@ -217,4 +212,4 @@ jobs:
                 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "release_win.zip,release_linux.zip,release_macos.zip"
+          artifacts: "release_win.zip,release_linux.zip,CNetMinecraftLauncher.dmg"
