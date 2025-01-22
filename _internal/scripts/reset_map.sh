@@ -2,12 +2,12 @@
 
 exec >> sh_log_cnet.txt
 
-if [ -d ../.minecraft/saves/SIn_world ]; then
-  rm -R ../.minecraft/saves/SIn_world
+if [ -d ../.minecraft/saves/CNet_world ]; then
+  rm -R ../.minecraft/saves/CNet_world
 fi
 
-mkdir ../.minecraft/saves/SIn_world
-cd ../.minecraft/saves/SIn_world
+mkdir ../.minecraft/saves/CNet_world
+cd ../.minecraft/saves/CNet_world
 
 zipfile=$(ls -t ../*.zip | head -1)
 

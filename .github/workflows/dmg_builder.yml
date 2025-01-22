@@ -1,0 +1,52 @@
+name: DMG package builder
+
+on:
+  push:
+    branches:
+    - dmg
+
+jobs:
+  mac_update_and_release:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Launcher Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.12  # specify your Python version
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip 
+          pip3 install -r requirements.txt
+
+      - name: Download map
+        id: download-map
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: cnet_map
+          repo: patrudaz/cnet_files
+          workflow: main.yml
+          path: ./_internal/.minecraft/saves
+          search_artifacts: true
+
+      - name: Build macOS Application
+        run: |
+          pip3 install py2app
+          rm -rf build dist
+          python3 setup.py py2app
+
+      - name: Generate .dmg file
+        uses: Lethja/create-dmg-action@v0.0.2
+        with:
+          name: 'CNetMinecraftLauncher'
+          srcdir: 'dist/'
+
+      - name: Upload dmg artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release_macos
+          path: ./CNetMinecraftLauncher.dmg

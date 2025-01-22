@@ -33,22 +33,22 @@ jobs:
         run: |
           winget install 7zip --force
 
-      - name: Download artifact
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          name: ELN_mod
-          repo: axalppro/ElectricalAge
-          workflow: main.yml
-          path: ./_internal/.minecraft/mods
-          search_artifacts: true
+#      - name: Download artifact
+#        id: download-artifact
+#        uses: dawidd6/action-download-artifact@v2
+#        with:
+#          name: ELN_mod
+#          repo: patrudaz/ElectricalAge
+#          workflow: main.yml
+#          path: ./_internal/.minecraft/mods
+#          search_artifacts: true
 
       - name: Download map
         id: download-map
         uses: dawidd6/action-download-artifact@v2
         with:
           name: cnet_map
-          repo: axalppro/cnet_files
+          repo: patrudaz/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
           search_artifacts: true
@@ -64,7 +64,7 @@ jobs:
           7z a -r release_win.zip ./dist/*
 
       - name: Upload zip artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: release_win
           path: ./release_win.zip
@@ -87,48 +87,44 @@ jobs:
           python3 -m pip install --upgrade pip 
           pip3 install -r requirements.txt
 
-      - name: Download artifact
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          name: ELN_mod
-          repo: axalppro/ElectricalAge
-          workflow: main.yml
-          path: ./_internal/.minecraft/mods
-          search_artifacts: true
+#      - name: Download artifact
+#        id: download-artifact
+#        uses: dawidd6/action-download-artifact@v2
+#        with:
+#          name: ELN_mod
+#          repo: patrudaz/ElectricalAge
+#          workflow: main.yml
+#          path: ./_internal/.minecraft/mods
+#          search_artifacts: true
 
       - name: Download map
         id: download-map
         uses: dawidd6/action-download-artifact@v2
         with:
           name: cnet_map
-          repo: axalppro/cnet_files
+          repo: patrudaz/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
           search_artifacts: true
 
-      - name: Build .exe
+      - name: Build macOS application
         run: |
           pip3 install py2app
+          rm -rf build dist
           sed -i '.bak' -e 's/version="1.0.0"/version="${{ github.ref_name }}"/g' setup.py
           python3 setup.py py2app
 
-      - name: Change rights
-        run: |
-          chflags -R nouchg dist/CNetMinecraftLauncher.app
-          chmod -R u+r+w+x,g+r+w+x,o+r-w+x v0.8.1/dist/CNetMinecraftLauncher.app
-          chmod a+w dist/CNetMinecraftLauncher.app/Contents/Resources/_internal/scripts/sh_log_cnet.txt
-          chmod -R -N dist/CNetMinecraftLauncher.app
+      - name: Generate .dmg package
+        uses: Lethja/create-dmg-action@v0.0.2
+        with:
+          name: 'CNetMinecraftLauncher'
+          srcdir: 'dist/'
 
-      - name: Generate .zip file
-        run: |
-          zip -r release_macos.zip ./dist/*
-
-      - name: Upload zip artifact
-        uses: actions/upload-artifact@v2
+      - name: Upload dmg artifact
+        uses: actions/upload-artifact@v4
         with:
           name: release_macos
-          path: ./release_macos.zip
+          path: ./CNetMinecraftLauncher.dmg
 
   linux_update_and_release:
     runs-on: ubuntu-latest
@@ -151,22 +147,22 @@ jobs:
           sudo apt install python3.12 -y
           sudo apt install python3-tk -y
 
-      - name: Download artifact
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          name: ELN_mod
-          repo: axalppro/ElectricalAge
-          workflow: main.yml
-          path: ./_internal/.minecraft/mods
-          search_artifacts: true
+#      - name: Download artifact
+#        id: download-artifact
+#        uses: dawidd6/action-download-artifact@v2
+#        with:
+#          name: ELN_mod
+#          repo: patrudaz/ElectricalAge
+#          workflow: main.yml
+#          path: ./_internal/.minecraft/mods
+#          search_artifacts: true
 
       - name: Download map
         id: download-map
         uses: dawidd6/action-download-artifact@v2
         with:
           name: cnet_map
-          repo: axalppro/cnet_files
+          repo: patrudaz/cnet_files
           workflow: main.yml
           path: ./_internal/.minecraft/saves
           search_artifacts: true
@@ -187,7 +183,7 @@ jobs:
           zip -r release_linux.zip ./dist/*
           
       - name: Upload zip artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: release_linux
           path: ./release_linux.zip
@@ -199,21 +195,21 @@ jobs:
     needs: [linux_update_and_release, update_and_release, mac_update_and_release]
     
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: release_win
           path: .
           
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: release_linux
           path: .
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: release_macos
           path: .
                 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "release_win.zip,release_linux.zip,release_macos.zip"
+          artifacts: "release_win.zip,release_linux.zip,CNetMinecraftLauncher.dmg"

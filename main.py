@@ -158,6 +158,10 @@ elif platform == "linux":
 else:
     logo = logo + ".icns"
 
+    # Changing rights, permissions & xattr
+    app_path = os.path.join(os.getcwd(), "../../..")
+    run_subprocess(os.getcwd() + "/remxttr.sh -R " + app_path + "CNetMinecraftLauncher.app")
+
 # Main window
 root = tk.Tk(className='Minecraft Launcher for CNet')
 root.resizable(False, False)
