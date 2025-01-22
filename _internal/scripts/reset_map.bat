@@ -1,6 +1,6 @@
 @echo off
 
-SET "F=..\.minecraft\saves\SIn_world\"
+SET "F=..\.minecraft\saves\CNet_world\"
 if exist "%F%" RMDIR /S /Q "%F%"
 
 mkdir "%F%"
