@@ -112,6 +112,8 @@ def update_parameters():
 
 def linux_rights():
     # Changing the rights of _internal folder
+    run_subprocess("SUDO_ASKPASS =${HOME}/.ssh/secrets/.supwd.sh")
+    run_subprocess("export SUDO_ASKPASS")
     run_subprocess("sudo chmod -R u+r+w+x,g+r+w+x,o+r-w+x ../_internal")
     run_subprocess("sudo chmod a+w ../_internal/scripts/sh_log_cnet.txt")
 
