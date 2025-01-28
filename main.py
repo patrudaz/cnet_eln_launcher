@@ -110,6 +110,12 @@ def update_parameters():
     quality_var.set(options.get("renderer", DEFAULT_OPTIONS["renderer"]))
 
 
+def linux_rights():
+    # Changing the rights of _internal folder
+    run_subprocess("sudo chmod -R u+r+w+x,g+r+w+x,o+r-w+x ../_internal")
+    run_subprocess("sudo chmod a+w ../_internal/scripts/sh_log_cnet.txt")
+
+
 def open_options_window():
     global quality_var, options_window, root
     options_window = tk.Toplevel(root)
@@ -155,6 +161,9 @@ if platform == "win32":
 elif platform == "linux":
     script_pre = LINUX_PREFIX
     logo = "@" + logo + ".xbm"
+
+    # Changing rights, permissions & xattr
+    linux_rights()
 else:
     logo = logo + ".icns"
 
