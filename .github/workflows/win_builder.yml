@@ -3,10 +3,10 @@ name: Build Linux distribution
 on:
   push:
     branches:
-    - develop
+    - win
 
 jobs:
-  application_builder:
+  windows_app_builder:
     runs-on: windows-latest
 
     steps:
