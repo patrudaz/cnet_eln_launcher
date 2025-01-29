@@ -3,7 +3,7 @@ name: Build Linux distribution
 on:
   push:
     branches:
-    - win
+    - develop
 
 jobs:
   windows_app_builder:
@@ -49,7 +49,7 @@ jobs:
 
       - name: Generate .zip file
         run: |
-          7z a -r release_win.zip ./dist/*
+          7z a -r release_win.zip ./dist/cnet_launcher/*
 
       - name: Upload zip artifact
         uses: actions/upload-artifact@v4
