@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.12  # specify your Python version
+          python-version: '3.10'  # specify your Python version
 
       - name: Install dependencies
         run: |
@@ -53,11 +53,9 @@ jobs:
           path: ./_internal/.minecraft/saves
           search_artifacts: true
 
-
-      - name: Build .exe
+      - name: Build Windows application
         run: |
-          pip install pyinstaller
-          pyinstaller --windowed --i "_internal/icon.ico" --add-data "_internal/icon.ico;." --add-data "_internal/scripts;scripts" --add-data "_internal/java/win;java/win" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+          pyinstaller --noconfirm --distpath dist cnet_win.spec
 
       - name: Generate .zip file
         run: |
@@ -68,7 +66,6 @@ jobs:
         with:
           name: release_win
           path: ./release_win.zip
-        
 
   mac_update_and_release:
     runs-on: macos-latest
