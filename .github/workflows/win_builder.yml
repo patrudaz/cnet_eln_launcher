@@ -45,7 +45,7 @@ jobs:
 
       - name: Build Windows application
         run: |
-          pyinstaller --noconfirm --distpath win_dist cnet_win.spec
+          pyinstaller --noconfirm --distpath dist cnet_win.spec
 
       - name: Generate .zip file
         run: |
