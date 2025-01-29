@@ -7,6 +7,20 @@ from tkinter.scrolledtext import ScrolledText
 import subprocess
 
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = getattr(sys, '_MEIPASS')
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
+sys_path = resource_path(os.path.join(os.path.dirname(__file__)))
+sys.path.insert(0, os.path.join(sys_path, "."))
+
 FILE_PATH = os.path.join(os.getcwd(), "_internal")
 SCRIPTS_PATH = os.path.join(os.getcwd(), "_internal", "scripts")
 OPTIONS_FILE = os.path.join(os.getcwd(), "options.json")
@@ -112,10 +126,12 @@ def update_parameters():
 
 def linux_rights():
     # Changing the rights of _internal folder
-    run_subprocess("SUDO_ASKPASS =${HOME}/.ssh/secrets/.supwd.sh")
-    run_subprocess("export SUDO_ASKPASS")
-    run_subprocess("sudo chmod -R u+r+w+x,g+r+w+x,o+r-w+x ../_internal")
-    run_subprocess("sudo chmod a+w ../_internal/scripts/sh_log_cnet.txt")
+    path = os.getcwd()
+    if os.path.isdir(os.path.join(path, "_internal")):
+        path = os.path.join(os.getcwd(), "_internal")
+
+    run_subprocess("chmod -R u+r+w+x,g+r+w+x,o+r-w+x " + path)
+    run_subprocess("chmod a+w " + path + "/scripts/sh_log_cnet.txt")
 
 
 def open_options_window():
