@@ -3,7 +3,7 @@ name: Build Linux distribution
 on:
   push:
     branches:
-    - linux
+    - develop
 
 jobs:
 
@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'  # specify your Python version
+          python-version: '3.12'  # specify your Python version
 
       - name: Install dependencies
         run: |
@@ -25,7 +25,7 @@ jobs:
           sudo add-apt-repository ppa:deadsnakes/ppa -y
           sudo apt update
           sudo apt upgrade -y
-          sudo apt install python3.10 -y
+          sudo apt install python3.12 -y
           sudo apt install python3-tk -y
 
       - name: Download map
