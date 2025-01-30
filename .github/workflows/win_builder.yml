@@ -1,0 +1,58 @@
+name: Build Windows distribution
+
+on:
+  push:
+    branches:
+    - win
+
+jobs:
+  windows_app_builder:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Launcher Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'  # specify your Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install winget
+        uses: Cyberboss/install-winget@v1
+  
+      - name: Install wingetcreate
+        run: winget install wingetcreate --disable-interactivity --accept-source-agreements      
+          
+      - name: Install 7zip
+        run: |
+          winget install 7zip --force
+
+      - name: Download map
+        id: download-map
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: cnet_map
+          repo: patrudaz/cnet_files
+          workflow: main.yml
+          path: ./_internal/.minecraft/saves
+          search_artifacts: true
+
+      - name: Build Windows application
+        run: |
+          pyinstaller --noconfirm --distpath dist cnet_win.spec
+
+      - name: Generate .zip file
+        run: |
+          7z a -r release_win.zip ./dist/*
+
+      - name: Upload zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release_win
+          path: ./release_win.zip

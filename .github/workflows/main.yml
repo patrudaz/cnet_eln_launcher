@@ -1,4 +1,4 @@
-name: Update and Release Launcher
+name: Release app for Windows, Linux and macOS
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.12  # specify your Python version
+          python-version: '3.12'  # specify your Python version
 
       - name: Install dependencies
         run: |
@@ -53,11 +53,9 @@ jobs:
           path: ./_internal/.minecraft/saves
           search_artifacts: true
 
-
-      - name: Build .exe
+      - name: Build Windows application
         run: |
-          pip install pyinstaller
-          pyinstaller --windowed --i "_internal/icon.ico" --add-data "_internal/icon.ico;." --add-data "_internal/scripts;scripts" --add-data "_internal/java/win;java/win" --add-data "_internal/.minecraft;.minecraft" --name "cnet_launcher" --distpath dist/ main.py
+          pyinstaller --noconfirm --distpath dist cnet_win.spec
 
       - name: Generate .zip file
         run: |
@@ -68,7 +66,6 @@ jobs:
         with:
           name: release_win
           path: ./release_win.zip
-        
 
   mac_update_and_release:
     runs-on: macos-latest
@@ -127,7 +124,7 @@ jobs:
           path: ./CNetMinecraftLauncher.dmg
 
   linux_update_and_release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout Launcher Repository
@@ -136,7 +133,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.12  # specify your Python version
+          python-version: '3.10'  # specify your Python version
 
       - name: Install dependencies
         run: |
@@ -144,7 +141,7 @@ jobs:
           sudo add-apt-repository ppa:deadsnakes/ppa -y
           sudo apt update
           sudo apt upgrade -y
-          sudo apt install python3.12 -y
+          sudo apt install python3.10 -y
           sudo apt install python3-tk -y
 
 #      - name: Download artifact
@@ -167,16 +164,16 @@ jobs:
           path: ./_internal/.minecraft/saves
           search_artifacts: true
 
-      - name: Build .exe
+      - name: Build Linux Application
         run: |
-          sudo pip3 install pyinstaller
-          pyinstaller --windowed --i "icon.xbm" --add-data "_internal/icon.xbm:." --add-data "_internal/scripts:scripts" --add-data "_internal/java/linux:java/linux" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
+          python -m pip install --upgrade pip
+          pip3 install -r requirements.txt
+          pyinstaller --noconfirm --distpath dist cnet_linux.spec
 
       - name: Change rights
         run: |
-          chmod a+x -R dist/cnet_launcher/_internal/scripts
+          chmod -R u+r+w+x,g+r+w+x,o+r-w+x dist/cnet_launcher/_internal
           chmod a+w dist/cnet_launcher/_internal/scripts/sh_log_cnet.txt
-          chmod a+x -R dist/cnet_launcher/_internal/java/linux
 
       - name: Generate .zip file
         run: |

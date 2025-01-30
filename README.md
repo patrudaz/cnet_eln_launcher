@@ -11,7 +11,7 @@ The minecraft client and scripts related were created using [HCML](https://hmcl.
 
 Two mods are installed, OpenComputers and ElectricalAge. Opencomputers is the one that was available in the previous lab version.
 
-For ElectricalAge it's a bit different. Every time a release of this launcher is created, the latest version of the mod is pulled from [this repository](https://github.com/axalppro/ElectricalAge/) and incorporated in the game files.
+For ElectricalAge it's a bit different. Every time a release of this launcher is created, the latest version of the mod is pulled from [this repository](https://github.com/patrudaz/ElectricalAge/) and incorporated in the game files.
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ For ElectricalAge it's a bit different. Every time a release of this launcher is
 
 ## Installation
 
-1. Go to the [release page](https://github.com/axalppro/cnet_eln_launcher/releases).
+1. Go to the [release page](https://github.com/patrudaz/cnet_eln_launcher/releases).
 2. Download the latest release.zip available.
 3. Extract the .zip downloaded.
 4. Execute cnet_launcher.exe.

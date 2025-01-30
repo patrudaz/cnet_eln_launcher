@@ -3,7 +3,7 @@ name: DMG package builder
 on:
   push:
     branches:
-    - dmg
+    - macOS
 
 jobs:
   mac_update_and_release:

@@ -7,6 +7,20 @@ from tkinter.scrolledtext import ScrolledText
 import subprocess
 
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = getattr(sys, '_MEIPASS')
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
+sys_path = resource_path(os.path.join(os.path.dirname(__file__)))
+sys.path.insert(0, os.path.join(sys_path, "."))
+
 FILE_PATH = os.path.join(os.getcwd(), "_internal")
 SCRIPTS_PATH = os.path.join(os.getcwd(), "_internal", "scripts")
 OPTIONS_FILE = os.path.join(os.getcwd(), "options.json")
@@ -110,6 +124,16 @@ def update_parameters():
     quality_var.set(options.get("renderer", DEFAULT_OPTIONS["renderer"]))
 
 
+def linux_rights():
+    # Changing the rights of _internal folder
+    path = os.getcwd()
+    if os.path.isdir(os.path.join(path, "_internal")):
+        path = os.path.join(os.getcwd(), "_internal")
+
+    run_subprocess("chmod -R u+r+w+x,g+r+w+x,o+r-w+x " + path)
+    run_subprocess("chmod a+w " + path + "/scripts/sh_log_cnet.txt")
+
+
 def open_options_window():
     global quality_var, options_window, root
     options_window = tk.Toplevel(root)
@@ -155,6 +179,9 @@ if platform == "win32":
 elif platform == "linux":
     script_pre = LINUX_PREFIX
     logo = "@" + logo + ".xbm"
+
+    # Changing rights, permissions & xattr
+    linux_rights()
 else:
     logo = logo + ".icns"
 
@@ -171,14 +198,12 @@ root['padx'] = 20
 root['pady'] = 10
 
 # Buttons: Because activebackground and bg do not work on macOS, we check the platform to create different button's layout
-if (platform == "win32") or (platform == "linux"):
+if platform == "win32":
     launch_btn = tk.Button(root, text="LAUNCH GAME", command=launch_game, bg='#00C043', activebackground='#139A42',  fg='black', width=20, font=('Consolas', 24))
     map_btn = tk.Button(root, text="RESET MAP", command=reset_map, bg='#E30067', activebackground='#A5014B', fg='black', width=14, font=('Consolas', 16))
     quit_btn = tk.Button(root, text="QUIT", bg='#E4080A', activebackground='#8B0102', fg='black', command=root.quit, width=10, font=('Consolas', 12))
-
-    if platform == "win32":
-        options_btn = tk.Button(root, text="OPTIONS", command=open_options_window, bg='#15A8F8', activebackground='#0E76AE', fg='black', width=14, font=('Consolas', 16))
-        options_btn.grid(row=1, column=1, pady=5, sticky='w')
+    options_btn = tk.Button(root, text="OPTIONS", command=open_options_window, bg='#15A8F8', activebackground='#0E76AE', fg='black', width=14, font=('Consolas', 16))
+    options_btn.grid(row=1, column=1, pady=5, sticky='w')
 else:
     launch_btn = tk.Button(root,  text="Launch Game", command=launch_game, fg='green', width=15)
     map_btn = tk.Button(root, text="Reset Map", command=reset_map, fg='blue', width=15)
