@@ -1,4 +1,4 @@
-name: Build Linux distribution
+name: Build Windows distribution
 
 on:
   push:
