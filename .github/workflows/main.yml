@@ -1,4 +1,4 @@
-name: Update and Release Launcher
+name: Release app for Windows, Linux and macOS
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'  # specify your Python version
+          python-version: '3.12'  # specify your Python version
 
       - name: Install dependencies
         run: |
@@ -164,12 +164,7 @@ jobs:
           path: ./_internal/.minecraft/saves
           search_artifacts: true
 
-#       - name: Build .exe
-#         run: |
-#           sudo pip3 install pyinstaller
-#           pyinstaller --windowed --i "icon.xbm" --add-data "_internal/icon.xbm:." --add-data "_internal/scripts:scripts" --add-data "_internal/java/linux:java/linux" --add-data "_internal/.minecraft:.minecraft" --name "cnet_launcher" --distpath dist/ main.py      
-
-      - name: Build .exe
+      - name: Build Linux Application
         run: |
           python -m pip install --upgrade pip
           pip3 install -r requirements.txt
