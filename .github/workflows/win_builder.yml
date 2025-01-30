@@ -3,7 +3,7 @@ name: Build Windows distribution
 on:
   push:
     branches:
-    - develop
+    - win
 
 jobs:
   windows_app_builder:
